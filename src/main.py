@@ -181,7 +181,7 @@ def main():
     else:
         recorder = aiy.audio.get_recorder()
         with recorder:
-            do_recognition(args, recorder, recognizer, player, status_ui)
+            do_recognition(args, recorder, recognizer, player, status_ui, credentials)
 
 
 def do_assistant_library(args, credentials, player, status_ui):
@@ -237,7 +237,7 @@ installed with:
             process_event(event)
 
 
-def do_recognition(args, recorder, recognizer, player, status_ui):
+def do_recognition(args, recorder, recognizer, player, status_ui, credentials):
     """Configure and run the recognizer."""
     say = aiy.audio.say
     actor = action.make_actor(say)
@@ -256,6 +256,10 @@ def do_recognition(args, recorder, recognizer, player, status_ui):
         import triggers.clap
         triggerer = triggers.clap.ClapTrigger(recorder)
         msg = 'Clap your hands'
+    elif args.trigger == 'hotword':
+        import triggers.hotword
+        triggerer = triggers.hotword.HotwordTrigger(credentials)
+        msg = 'Say "Ok Google"'
     else:
         logger.error("Unknown trigger '%s'", args.trigger)
         return

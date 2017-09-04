@@ -10,6 +10,7 @@ WorkingDirectory=/home/pi/voice-recognizer-raspi
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
+RestartSec=300s
 User=pi
 
 [Install]

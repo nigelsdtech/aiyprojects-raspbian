@@ -2,10 +2,10 @@
 # Should be installed to ~/.config/voice-recognizer.ini
 
 # Select the trigger: gpio (default), clap, ok-google.
-# trigger = clap
+trigger = ok-google
 
 # Select the trigger sound:
-# trigger-sound = path_to_your_sound.wav
+#trigger-sound = /home/pi/voice-recognizer-raspi/sounds/served.wav
 
 # Uncomment to enable the Cloud Speech API for local commands.
 # cloud-speech = true
